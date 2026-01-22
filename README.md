@@ -6,20 +6,6 @@ A powerful **Retrieval-Augmented Generation (RAG)** system that enables intellig
 [![LangChain](https://img.shields.io/badge/LangChain-latest-green.svg)](https://github.com/langchain-ai/langchain)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 📋 Table of Contents
-
-- [Features](#-features)
-- [How It Works](#-how-it-works)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Configuration](#-configuration)
-- [Project Structure](#-project-structure)
-- [Examples](#-examples)
-- [Security](#-security)
-- [Troubleshooting](#-troubleshooting)
-- [Contributing](#-contributing)
-- [License](#-license)
-
 ## ✨ Features
 
 - 📄 **PDF Document Processing**: Automatically loads and processes PDF documents
@@ -198,112 +184,7 @@ rag-qa-system/
 └── LICENSE                   # MIT License
 ```
 
-## 📝 Examples
 
-### Example 1: Basic Question
-
-**Input:**
-```python
-ask_question("What is artificial intelligence?")
-```
-
-**Output:**
-```
-Question: What is artificial intelligence?
-================================================================================
-
-Answer:
-Artificial Intelligence is a computing concept that enables machines to think 
-and solve complex problems like humans do through a self-correcting learning 
-process...
-
-Source Documents:
-================================================================================
---- Source 1 ---
-Generally speaking, Artificial Intelligence is a computing concept that helps 
-a machine think and solve complex problems as we humans do with our intelligence...
-```
-
-### Example 2: Specific Technical Query
-
-```python
-ask_question("What are the subfields of AI mentioned in the document?")
-```
-
-### Example 3: Without Sources (Cleaner Output)
-
-```python
-ask_question("How does machine learning work?", show_sources=False)
-```
-
-## 🔒 Security
-
-### Best Practices
-
-✅ **DO:**
-- Store API tokens in environment variables or `.env` files
-- Add `.env` to `.gitignore`
-- Use `getpass` for interactive token input in notebooks
-- Regularly rotate your API tokens
-- Use read-only tokens when possible
-
-❌ **DON'T:**
-- Hardcode tokens in source code
-- Commit `.env` files to version control
-- Share tokens in public repositories
-- Use tokens with more permissions than needed
-
-### Revoking Exposed Tokens
-
-If you accidentally expose a token:
-
-1. Go to [HuggingFace Settings](https://huggingface.co/settings/tokens)
-2. Delete the exposed token
-3. Generate a new token
-4. Update your `.env` file
-
-## 🔧 Troubleshooting
-
-### Common Issues
-
-#### Issue: `FileNotFoundError: PDF file not found`
-
-**Solution:** Ensure the PDF file path is correct and the file exists.
-
-```bash
-# Check if file exists
-ls path/to/your/file.pdf
-```
-
-#### Issue: `Authentication Error` from HuggingFace
-
-**Solution:** 
-1. Check your token is set correctly
-2. Verify the token has not expired
-3. Ensure you have internet connection
-
-```bash
-# Test token
-echo $HUGGINGFACEHUB_API_TOKEN
-```
-
-#### Issue: `Out of Memory Error`
-
-**Solution:** Reduce chunk size or process fewer documents at once:
-
-```python
-config = {
-    "chunk_size": 300,  # Smaller chunks
-    "retriever_k": 2    # Fewer retrieved chunks
-}
-```
-
-#### Issue: Poor Answer Quality
-
-**Solution:** Try adjusting these parameters:
-- Increase `chunk_overlap` for better context
-- Adjust `temperature` (lower = more focused)
-- Increase `retriever_k` for more context
 
 ## 🤝 Contributing
 
